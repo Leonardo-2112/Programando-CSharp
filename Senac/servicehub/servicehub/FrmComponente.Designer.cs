@@ -47,9 +47,9 @@
             clnNomeUsuario = new DataGridViewTextBoxColumn();
             clnEmailUsuario = new DataGridViewTextBoxColumn();
             dgvSolicitacoes = new DataGridView();
-            button3 = new Button();
             clnIdSolicitacoes = new DataGridViewTextBoxColumn();
             clnDescricaoSolicitacoes = new DataGridViewTextBoxColumn();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvServicos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSolicitacoes).BeginInit();
@@ -65,7 +65,7 @@
             dgvServicos.Name = "dgvServicos";
             dgvServicos.ReadOnly = true;
             dgvServicos.RowHeadersVisible = false;
-            dgvServicos.Size = new Size(670, 66);
+            dgvServicos.Size = new Size(670, 117);
             dgvServicos.TabIndex = 0;
             // 
             // clnId
@@ -176,11 +176,11 @@
             dgvUsuarios.AllowUserToDeleteRows = false;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnIdUsuarios, clnNomeUsuario, clnEmailUsuario });
-            dgvUsuarios.Location = new Point(70, 303);
+            dgvUsuarios.Location = new Point(70, 331);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
-            dgvUsuarios.Size = new Size(670, 93);
+            dgvUsuarios.Size = new Size(670, 127);
             dgvUsuarios.TabIndex = 9;
             // 
             // clnIdUsuarios
@@ -213,22 +213,12 @@
             dgvSolicitacoes.AllowUserToDeleteRows = false;
             dgvSolicitacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSolicitacoes.Columns.AddRange(new DataGridViewColumn[] { clnIdSolicitacoes, clnDescricaoSolicitacoes });
-            dgvSolicitacoes.Location = new Point(70, 425);
+            dgvSolicitacoes.Location = new Point(70, 472);
             dgvSolicitacoes.Name = "dgvSolicitacoes";
             dgvSolicitacoes.ReadOnly = true;
             dgvSolicitacoes.RowHeadersVisible = false;
-            dgvSolicitacoes.Size = new Size(670, 85);
+            dgvSolicitacoes.Size = new Size(670, 102);
             dgvSolicitacoes.TabIndex = 10;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(70, 533);
-            button3.Name = "button3";
-            button3.Size = new Size(131, 23);
-            button3.TabIndex = 11;
-            button3.Text = "Ver Solicitações";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
             // 
             // clnIdSolicitacoes
             // 
@@ -245,11 +235,21 @@
             clnDescricaoSolicitacoes.ReadOnly = true;
             clnDescricaoSolicitacoes.Width = 400;
             // 
+            // button3
+            // 
+            button3.Location = new Point(70, 580);
+            button3.Name = "button3";
+            button3.Size = new Size(131, 23);
+            button3.TabIndex = 11;
+            button3.Text = "Ver Solicitações";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // FrmComponente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 587);
+            ClientSize = new Size(800, 664);
             Controls.Add(button3);
             Controls.Add(dgvSolicitacoes);
             Controls.Add(dgvUsuarios);

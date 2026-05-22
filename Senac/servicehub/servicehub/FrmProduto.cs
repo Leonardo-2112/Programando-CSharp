@@ -21,5 +21,10 @@ namespace servicehub
         {
 
         }
+
+        private void FrmProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
