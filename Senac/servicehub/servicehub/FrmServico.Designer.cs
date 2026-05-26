@@ -36,14 +36,13 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            nudPreco = new NumericUpDown();
             checkBox1 = new CheckBox();
             btnAdd = new Button();
             btnEditar = new Button();
             btnPesquisar = new Button();
             btnCancelar = new Button();
             btnExcluir = new Button();
-            ((System.ComponentModel.ISupportInitialize)nudPreco).BeginInit();
+            txtPreco = new TextBox();
             SuspendLayout();
             // 
             // txtID
@@ -103,13 +102,6 @@
             label4.Size = new Size(37, 15);
             label4.TabIndex = 12;
             label4.Text = "Preço";
-            // 
-            // nudPreco
-            // 
-            nudPreco.Location = new Point(136, 220);
-            nudPreco.Name = "nudPreco";
-            nudPreco.Size = new Size(120, 23);
-            nudPreco.TabIndex = 2;
             // 
             // checkBox1
             // 
@@ -209,19 +201,27 @@
             btnExcluir.Text = "E&xcluir";
             btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // txtPreco
+            // 
+            txtPreco.Location = new Point(153, 217);
+            txtPreco.Name = "txtPreco";
+            txtPreco.Size = new Size(126, 23);
+            txtPreco.TabIndex = 14;
             // 
             // FrmServico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(592, 450);
+            Controls.Add(txtPreco);
             Controls.Add(btnExcluir);
             Controls.Add(btnCancelar);
             Controls.Add(btnPesquisar);
             Controls.Add(btnEditar);
             Controls.Add(btnAdd);
             Controls.Add(checkBox1);
-            Controls.Add(nudPreco);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -233,7 +233,6 @@
             Name = "FrmServico";
             Text = "ServiceHub - Serviços";
             Load += FrmServico_Load;
-            ((System.ComponentModel.ISupportInitialize)nudPreco).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,12 +246,12 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private NumericUpDown nudPreco;
         private CheckBox checkBox1;
         private Button btnAdd;
         private Button btnEditar;
         private Button btnPesquisar;
         private Button btnCancelar;
         private Button btnExcluir;
+        private TextBox txtPreco;
     }
 }

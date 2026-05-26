@@ -21,6 +21,20 @@ namespace servicehub
         {
 
         }
+        private void HabilitaControle()
+        {
+            btnAdd.Enabled = true;
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnPesquisar.Enabled = true;
+        }
+
+        private void DesabilitaControle()
+        {
+            btnAdd.Enabled = false;
+            btnEditar.Enabled = false;
+            
+        }
 
         private void FrmServico_Load(object sender, EventArgs e)
         {
@@ -31,7 +45,7 @@ namespace servicehub
         {
             string nome = txtNome.Text;
             string descricao = txtDescricao.Text;
-            double preco = (double)nudPreco.Value;//Conversão de decimal para double
+            double preco = double.Parse(txtPreco.Text);//Conversão de decimal para double
 
             var cmd = Banco.Abrir();//Abre conexão com o bando de dados, retornando um objeto do tipo SqlCommand
             cmd.CommandText = $"insert servicos (nome, descricao, preco) values('{nome}', '{nome}', {preco})";//insert no banco de dados utilizando a variavel,
@@ -47,12 +61,13 @@ namespace servicehub
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            DesabilitaControle();
             if (btnPesquisar.Text == "&Pesquisar")
             {
                 txtID.ReadOnly = false;
                 txtNome.ReadOnly = true;
                 txtDescricao.ReadOnly = true;
-                nudPreco.ReadOnly = true;
+                txtPreco.ReadOnly = true;
                 checkBox1.Enabled = false;
                 txtID.Focus();
                 btnPesquisar.Text = "Buscar";
@@ -67,12 +82,16 @@ namespace servicehub
                 {
                     txtNome.Text = dr.GetString(1);
                     txtDescricao.Text = dr.GetString(2);
-                    nudPreco.Value = dr.GetDecimal(3);
+                    txtPreco.Text = dr.GetDecimal(3).ToString();
                     checkBox1.Checked = dr.GetBoolean(4);
                 }
                 btnPesquisar.Text = "&Pesquisar";
                 txtID.ReadOnly = true;
+
+                btnEditar.Enabled = true;
+                btnPesquisar.Enabled = false;
             }
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -81,18 +100,19 @@ namespace servicehub
             {
                 txtNome.ReadOnly = false;
                 txtDescricao.ReadOnly = false;
-                nudPreco.ReadOnly = false;
+                txtPreco.ReadOnly = false;
                 checkBox1.Enabled = true;
                 btnEditar.Text = "Salvar";
                 txtNome.Focus();
             }
-            else{
+            else
+            {
                 var cmd = Banco.Abrir();
 
-                string id = txtID.Text;
+                int id = int.Parse(txtID.Text);
                 string nome = txtNome.Text;
                 string descricao = txtDescricao.Text;
-                double preco = (double)nudPreco.Value;//Conversão de decimal para double
+                double preco = double.Parse(txtPreco.Text);//Conversão de decimal para double
                 bool descontinuado = checkBox1.Checked;
                 cmd.CommandText = $"update servicos set nome = '{nome}', descricao = '{descricao}', preco = {preco}, descontinuado = {descontinuado} where id = {id}";
                 if (cmd.ExecuteNonQuery() > 0)
@@ -100,11 +120,25 @@ namespace servicehub
                     btnEditar.Text = "$Editar";
                     txtNome.ReadOnly = true;
                     txtDescricao.ReadOnly = true;
-                    nudPreco.ReadOnly = true;
+                    txtPreco.ReadOnly = true;
                     checkBox1.Enabled = false;
 
                 }
+                HabilitaControle();
             }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var cmd = Banco.Abrir();
+            int id = int.Parse(txtID.Text);
+            cmd.CommandText = $"delete from servicos where id = {id}";
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                btnExcluir.Enabled = false;
+            }
+            HabilitaControle();
+            
         }
     }
 }
